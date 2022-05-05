@@ -1,0 +1,271 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  --cl-primary: hsl(170, 100%, 26%);
+  --cl-secondary: hsl(210, 9%, 31%);
+  --headline: hsl(210, 11%, 15%);
+  --brand-beige: hsl(39, 100%, 97%);
+  --brand-light: hsla(148, 25%, 89%, 1);
+  --cl-services: hsla(180, 14%, 97%, 1);
+  --cl-about: hsla(39, 100%, 97%, 1);
+  --cl-contact: #ffffff;
+  --nav-height: 7.2rem;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  margin: auto 0;
+  text-align: center;
+  background: var(--cl-services);
+  width: 100vw;
+}
+
+.wrapper {
+  width: 37.5rem;
+  margin-inline: auto;
+  padding-inline: 2.4rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 2.4rem;
+  height: var(--nav-height);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+nav .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav.scroll {
+  background: var(--cl-primary);
+  width: 100vw;
+}
+
+nav.scroll svg:nth-child(1) path {
+  fill: #ffffff;
+}
+
+nav.scroll svg:nth-child(2) path {
+  stroke: #ffffff;
+}
+
+header h4 {
+  color: var(--cl-primary);
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+}
+
+header h1 {
+  margin-top: 1.6rem;
+  font-size: 3.4rem;
+  color: hsl(210, 11%, 15%);
+}
+
+header p {
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  color: var(--cl-secondary);
+  margin: 3.2rem auto 2.4rem;
+}
+
+header {
+  margin-top: calc(4.1rem + var(--nav-height));
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  max-width: 32.7rem;
+  margin: 0 auto;
+}
+
+button {
+  margin: 0 auto 6rem;
+  background: var(--cl-primary);
+  color: hsl(148, 23%, 89%);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1.6rem 3.2rem;
+  border-radius: 40px;
+  border: none;
+}
+
+button:hover {
+  transform: scale(1.05);
+  transition-duration: 0.5s;
+}
+
+button:active {
+  opacity: 0.8;
+}
+
+header img {
+  width: 26.4rem;
+  display: block;
+  margin-inline: auto;
+  object-position: 0 2rem;
+}
+
+header::before {
+  content: '';
+  width: 100vw;
+  height: calc(108rem + var(--nav-height));
+  position: absolute;
+  background: var(--brand-light);
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+main .numbers {
+  width: 32.7rem;
+  margin-inline: auto;
+  padding-block: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6rem;
+  background: var(--brand-beige);
+  border-radius: 6px;
+  border: 1px solid var(--brand-light);
+}
+
+.numbers h3 {
+  font-size: 4.8rem;
+}
+
+.numbers p {
+  color: var(--cl-primary);
+  margin: 0 auto;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+.about::before {
+  content: '';
+  background: var(--cl-about);
+  display: block;
+  width: 100vw;
+  height: 96.9rem;
+  position: absolute;
+  left: 0;
+  z-index: -1;
+}
+
+.about {
+  text-align: justify;
+}
+
+.about h4 {
+  margin-top: 10rem;
+  margin-bottom: 1.6rem;
+  color: var(--cl-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 2.1rem;
+}
+
+.about h2 {
+  font-size: 3rem;
+  margin-bottom: 2.4rem;
+}
+
+.about p {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin-bottom: 6rem;
+}
+
+.about img {
+  margin-bottom: 10rem;
+}
+
+.contact::before {
+  content: '';
+  background: #ffffff;
+  display: block;
+  width: 100vw;
+  height: 71.9rem;
+  position: absolute;
+  left: 0;
+  z-index: -1;
+}
+
+.contact {
+  text-align: justify;
+}
+
+.contact h2 {
+  margin-top: 10rem;
+  font-size: 2.4rem;
+  margin-bottom: 3.2rem;
+}
+
+.contact-settings {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  color: (--cl-secondary);
+  gap: 0.8rem;
+}
+
+.contact-settings:nth-of-type(1) {
+  margin-bottom: 1.6rem;
+}
+
+.contact button {
+  margin-top: 3.2rem;
+}
+
+.contact img {
+  margin: 0 0 10rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100vw;
+  margin: 0 auto;
+  background: var(--cl-primary);
+  color: hsl(148, 23%, 89%);
+  text-align: justify;
+  padding: 6rem 0 6rem 3.2rem;
+}
+
+footer p {
+  font-size: 1.6rem;
+}
+
+footer p:nth-of-type(1) {
+  margin-top: 2.4rem;
+  margin-bottom: 1.2rem;
+}
+
+footer .icons {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+  padding-top: 3.2rem;
+}
