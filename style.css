@@ -52,6 +52,7 @@ nav .wrapper {
 nav.scroll {
   background: var(--cl-primary);
   width: 100vw;
+  padding: 0;
 }
 
 nav.scroll svg:nth-child(1) path {
