@@ -17,12 +17,22 @@
   --nav-height: 7.2rem;
 }
 
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
   margin: auto 0;
   text-align: center;
   background: var(--cl-services);
-  width: 100vw;
+  overflow: overlay;
+}
+
+ul {
+  list-style: none;
 }
 
 .wrapper {
@@ -51,16 +61,22 @@ nav .wrapper {
 
 nav.scroll {
   background: var(--cl-primary);
-  width: 100vw;
+  width: 100%;
   padding: 0;
 }
 
-nav.scroll svg:nth-child(1) path {
+nav.scroll .logo svg path {
   fill: #ffffff;
 }
 
-nav.scroll svg:nth-child(2) path {
+nav.scroll button svg path {
   stroke: #ffffff;
+}
+
+nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 header h4 {
@@ -94,7 +110,8 @@ main {
   margin: 0 auto;
 }
 
-button {
+header button,
+main button {
   margin: 0 auto 6rem;
   background: var(--cl-primary);
   color: hsl(148, 23%, 89%);
@@ -129,7 +146,7 @@ header img {
 
 header::before {
   content: '';
-  width: 100vw;
+  width: 100%;
   height: calc(108rem + var(--nav-height));
   position: absolute;
   background: var(--brand-light);
@@ -269,4 +286,97 @@ footer .icons {
   align-items: center;
   gap: 3.2rem;
   padding-top: 3.2rem;
+}
+
+body.menu-expanded {
+  overflow: hidden;
+  /* O overflow hidden retira o scroll da aplicação */
+}
+
+body.menu-expanded > :not(nav) {
+  /* todos elementos de primeiro nível (>) exceto (:not) */
+  display: none;
+}
+
+.menu,
+#close-menu,
+body.menu-expanded #open-menu {
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.menu-expanded .menu,
+body.menu-expanded #close-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.menu-expanded .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--cl-primary);
+  height: 100vh;
+  width: 100vw;
+  padding-top: 7.2rem;
+}
+
+body.menu-expanded nav {
+  position: relative;
+}
+
+.menu ul {
+  margin-bottom: 4.8rem;
+}
+
+.menu ul {
+  margin-top: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4.8rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.menu ul a {
+  color: var(--brand-beige);
+  text-decoration: none;
+}
+
+.menu .button {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--cl-primary);
+  background: #ffffff;
+  padding: 1.6rem 3.2rem;
+  margin: 0 auto;
+  display: inline-block;
+  /* o inline é padrão do elemento a */
+  border-radius: 4rem;
+}
+
+.menu .icons {
+  margin-top: 8rem;
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+  justify-content: center;
+}
+
+body.menu-expanded .logo,
+body.menu-expanded button {
+  position: relative;
+  z-index: 100;
+}
+
+body.menu-expanded nav .logo path {
+  fill: #ffffff;
+}
+
+body.menu-expanded button path {
+  stroke: #ffffff;
 }
