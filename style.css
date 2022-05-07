@@ -14,7 +14,12 @@
   --cl-services: hsla(180, 14%, 97%, 1);
   --cl-about: hsla(39, 100%, 97%, 1);
   --cl-contact: #ffffff;
+  --card: hsla(148, 23%, 89%, 1);
   --nav-height: 7.2rem;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -35,6 +40,10 @@ ul {
   list-style: none;
 }
 
+section {
+  padding-block: 10rem;
+}
+
 .wrapper {
   width: 37.5rem;
   margin-inline: auto;
@@ -49,8 +58,8 @@ nav {
   height: var(--nav-height);
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  z-index: 100;
+  width: 100vw;
 }
 
 nav .wrapper {
@@ -61,8 +70,6 @@ nav .wrapper {
 
 nav.scroll {
   background: var(--cl-primary);
-  width: 100%;
-  padding: 0;
 }
 
 nav.scroll .logo svg path {
@@ -79,38 +86,30 @@ nav button {
   cursor: pointer;
 }
 
-header h4 {
+#home h4 {
   color: var(--cl-primary);
-  text-transform: uppercase;
   font-size: 1.4rem;
   letter-spacing: 0.08em;
 }
 
-header h1 {
+#home h1 {
   margin-top: 1.6rem;
   font-size: 3.4rem;
   color: hsl(210, 11%, 15%);
 }
 
-header p {
+#home p {
   font-size: 1.8rem;
   line-height: 2.7rem;
   color: var(--cl-secondary);
   margin: 3.2rem auto 2.4rem;
 }
 
-header {
-  margin-top: calc(4.1rem + var(--nav-height));
+#home {
+  padding-top: calc(4.1rem + var(--nav-height));
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  max-width: 32.7rem;
-  margin: 0 auto;
-}
-
-header button,
+#home button,
 main button {
   margin: 0 auto 6rem;
   background: var(--cl-primary);
@@ -137,14 +136,14 @@ button:active {
   opacity: 0.8;
 }
 
-header img {
+#home img {
   width: 26.4rem;
   display: block;
   margin-inline: auto;
   object-position: 0 2rem;
 }
 
-header::before {
+#home::before {
   content: '';
   width: 100%;
   height: calc(108rem + var(--nav-height));
@@ -156,7 +155,7 @@ header::before {
   z-index: -1;
 }
 
-main .numbers {
+#numbers {
   width: 32.7rem;
   margin-inline: auto;
   padding-block: 4rem;
@@ -169,34 +168,23 @@ main .numbers {
   border: 1px solid var(--brand-light);
 }
 
-.numbers h3 {
+#numbers h3 {
   font-size: 4.8rem;
 }
 
-.numbers p {
+#numbers p {
   color: var(--cl-primary);
   margin: 0 auto;
   font-size: 1.6rem;
   line-height: 2.4rem;
 }
 
-.about::before {
-  content: '';
-  background: var(--cl-about);
-  display: block;
-  width: 100vw;
-  height: 96.9rem;
-  position: absolute;
-  left: 0;
-  z-index: -1;
-}
-
-.about {
+#about {
   text-align: justify;
+  background: var(--cl-about);
 }
 
-.about h4 {
-  margin-top: 10rem;
+#about h4 {
   margin-bottom: 1.6rem;
   color: var(--cl-primary);
   text-transform: uppercase;
@@ -204,59 +192,43 @@ main .numbers {
   line-height: 2.1rem;
 }
 
-.about h2 {
+#about h2 {
   font-size: 3rem;
   margin-bottom: 2.4rem;
 }
 
-.about p {
+#about p {
   font-size: 1.6rem;
   line-height: 2.4rem;
   margin-bottom: 6rem;
 }
 
-.about img {
-  margin-bottom: 10rem;
-}
-
-.contact::before {
-  content: '';
-  background: #ffffff;
-  display: block;
-  width: 100vw;
-  height: 71.9rem;
-  position: absolute;
-  left: 0;
-  z-index: -1;
-}
-
-.contact {
+#contacts {
   text-align: justify;
 }
 
-.contact h2 {
-  margin-top: 10rem;
+#contacts h2 {
   font-size: 2.4rem;
   margin-bottom: 3.2rem;
 }
 
-.contact-settings {
+.contact {
   display: flex;
+  gap: 0.8rem;
   align-items: center;
   font-size: 1.6rem;
-  color: (--cl-secondary);
-  gap: 0.8rem;
+  color: var(--cl-secondary);
 }
 
-.contact-settings:nth-of-type(1) {
+.contact:nth-of-type(1) {
   margin-bottom: 1.6rem;
 }
 
-.contact button {
+#contacts button {
   margin-top: 3.2rem;
 }
 
-.contact img {
+#contacts img {
   margin: 0 0 10rem;
 }
 
@@ -295,7 +267,7 @@ body.menu-expanded {
 
 body.menu-expanded > :not(nav) {
   /* todos elementos de primeiro nível (>) exceto (:not) */
-  display: none;
+  visibility: hidden;
 }
 
 .menu,
@@ -311,6 +283,10 @@ body.menu-expanded #close-menu {
   visibility: visible;
 }
 
+.menu {
+  transform: translateY(100%);
+}
+
 body.menu-expanded .menu {
   position: fixed;
   top: 0;
@@ -319,10 +295,8 @@ body.menu-expanded .menu {
   height: 100vh;
   width: 100vw;
   padding-top: 7.2rem;
-}
-
-body.menu-expanded nav {
-  position: relative;
+  transition: transform 300ms;
+  transform: translateY(0);
 }
 
 .menu ul {
@@ -379,4 +353,48 @@ body.menu-expanded nav .logo path {
 
 body.menu-expanded button path {
   stroke: #ffffff;
+}
+
+#services header h4 {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: 0.08rem;
+  margin-bottom: 1.6rem;
+  color: var(--cl-primary);
+}
+
+#services header h2 {
+  font-size: 3rem;
+  line-height: 3.9rem;
+  color: var(--headline);
+  margin-bottom: 6rem;
+}
+
+#services #cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+#services .card {
+  background: #ffffff;
+  border: 1px solid var(--brand-light);
+  padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  text-align: left;
+  border-radius: 0.6rem;
+}
+
+.card h3 {
+  font-size: 2.4rem;
+  color: var(--headline);
+}
+
+.card p {
+  font-size: 1.6rem;
+  color: var(--headline);
+  line-height: 150%;
 }
