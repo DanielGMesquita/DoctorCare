@@ -8,3 +8,5 @@
 	<li>Javascript: ScrollReveal, adicionar classes, variáveis, querySelector, getAttribute, operadores lógicos, operadores de negação, operadores de comparação, funções</li>
 </ul>
 <hr>
+<h2>Próximas etapas:<2>
+	<p> Personalizar tema e adicionar funcionalidades de depoimento e mapas. </p>
